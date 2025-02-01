@@ -4,14 +4,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SELF HELP THERAPY- Your Mental Health Self-Care Bot</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-    }
+  body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: url('your-background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:hsla(140, 20%, 90%, 0.6); 
+  z-index: -1;
+}
     header {
       background: #71bbe9;
       color: white;
@@ -20,13 +32,13 @@
     }
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 5em;
       opacity: 0;
       transform: translateY(-30px);
       animation: fadeInUp 1.5s ease-in-out forwards;
     }
     header h1 {
-      font-size: 3em;
+      font-size: 4em;
       text-transform: uppercase;
       font-weight: bold;
     }
@@ -41,16 +53,10 @@
       }
     }
     header p {
-      font-size: 1.2em;
+      font-size: 1.8em;
       color: #fff;
     }
-    .container {
-      width: 80%;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+   
     h2 {
       color: #71bbe9;
     }
@@ -62,16 +68,34 @@
       text-decoration: underline;
     }
     .cta-button, .show-more-button {
-      display: inline-block;
-      background: #71bbe9;
-      color: white;
-      padding: 10px 20px;
-      margin: 20px 0;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
+  display: inline-block;
+  background: #71bbe9;
+  color: white;
+  padding: 15px 30px; /* Increased padding for a bigger button */
+  font-size: 1.8em; /* Larger text */
+  margin: 20px 0;
+  border-radius: 10px; /* More rounded corners */
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover animation */
+.show-more-button:hover {
+  background: #5ca9d6;
+  transform: scale(1.2); /* Slight zoom effect */
+  animation: bounce 0.5s ease-in-out;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
     .cta-button:hover, .show-more-button:hover {
       background: #71bbe9;
       transform: scale(1.05);
@@ -116,7 +140,7 @@
 
     .mood-selector button {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 24px;
       margin: 10px;
       background-color: #71bbe9;
       color: white;
@@ -124,12 +148,14 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-size:1.2em ;
+      font-weight:bold ;
     }
     .mood-selector button:hover {
-      background-color: #71bbe9;
-    }
+  background-color: #4a90e2;
+  transform: scale(1.1);
+}
 
-    /* Hide the detailed content initially */
     .more-content {
       display: none;
       padding: 10px;
@@ -137,8 +163,6 @@
       border-radius: 8px;
       margin-top: 20px;
     }
-
-    /* Add smooth transitions */
     .hidden {
       display: none;
       opacity: 0;
@@ -149,6 +173,7 @@
       opacity: 1;
       transition: opacity 0.5s ease-in;
     }
+    
   </style>
 </head>
 <body>
@@ -161,7 +186,6 @@
     <h2>What is Self Help Therapy?</h2>
     <p>Self Help Therapy is self-care bot designed to support your mental health journey. Whether you're feeling stressed, anxious, or just need a little encouragement, Self Help Therapy is here to help you practice self-care, feel reliable, and feel your best.</p>
     
-    <!-- Image section added -->
     <div class="image-container">
       <img src="mental_health_image.jpg" alt="Mental Health Wellness">
     </div>
@@ -169,21 +193,20 @@
     <h2>Relaxation Techniques</h2>
     <p>Here are some relaxation techniques to help calm your mind and reduce stress:</p>
 
-    <!-- Relaxation techniques section with images -->
     <div class="relaxation-techniques">
-      <!-- Breathing Exercises -->
+      
       <div class="technique">
         <img src="breathing_technique.jpg" alt="Breathing Exercises">
         <h3>Breathing Exercises</h3>
         <p>Take a deep breath. Slowly inhale and exhale to calm your mind.</p>
       </div>
-      <!-- Meditation -->
+      
       <div class="technique">
         <img src="meditation_illustration.jpg" alt="Meditation">
         <h3>Meditation</h3>
         <p>Focus on your breath, clear your thoughts, and meditate for a peaceful mind.</p>
       </div>
-      <!-- Guided Imagery -->
+      
       <div class="technique">
         <img src="guided_imagery.jpg" alt="Guided Imagery">
         <h3>Guided Imagery</h3>
@@ -191,7 +214,7 @@
       </div>
     </div>
 
-    <!-- Mood Selector -->
+    
     <div class="mood-selector">
       <h3>How are you feeling today?</h3>
       <button onclick="updateMood('Happy')">😊 Happy</button>
@@ -200,14 +223,12 @@
       <button onclick="updateMood('Anxious')">😰 Anxious</button>
     </div>
 
-    <!-- Chatbot Interaction -->
     <div class="chat-container" id="chat-container">
       <h3>Chat with Self Help Therapy</h3>
       <p>Tell me how you're feeling, and I'll guide you!</p>
       <div id="chat-response"></div>
     </div>
 
-    <!-- Show More Content Button -->
     <button class="show-more-button" onclick="toggleContent()">Show More</button>
     <div class="more-content" id="more-content">
       <h2>How Self Help Therapy Can Help You</h2>
@@ -230,7 +251,7 @@
 
     <h2>Get Started with Self Help Therapy</h2>
     <p>Ready to take the first step toward better mental health?</p>
-    <a href="#" class="cta-button">Use Self Help Therapy Now</a>
+    <a href="health.html" class="cta-button">Use Self Help Therapy Now</a>
 
     <h2>FAQs</h2>
     <p><strong>Q: Is Self Help Therapy a replacement for therapy?</strong><br>
@@ -244,7 +265,6 @@
   </footer>
 
   <script>
-    // Mood Selector
     function updateMood(mood) {
       let response = '';
       if (mood === 'Happy') {
@@ -260,7 +280,6 @@
       document.getElementById('chat-container').style.display = 'block';
     }
 
-    // Show More Content
     function toggleContent() {
       const content = document.getElementById('more-content');
       content.classList.toggle('hidden');

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindfulMate - Mental Health Self-Care Bot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: rgb(169, 211, 190);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: #4e89d2;
+    }
+    .question {
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option {
+      padding: 10px;
+      background: #b4bac7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .option:hover {
+      background: #457fa0;
+    }
+    .option:active {
+      transform: scale(0.95);
+    }
+    .back-button {
+      background: #6c757d;
+    }
+    .back-button:hover {
+      background: #5a6268;
+    }
+    .response {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #405288;
+    }
+    .hidden {
+      display: none;
+    }
+    a {
+      color: #4e89d2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MindfulMate</h1>
+    <p>Your Mental Health Self-Care Bot</p>
+
+    <!-- Question 1 -->
+    <div id="question1" class="question">
+      <p>How are you feeling today?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Good', 'question2a')">😊 Good</button>
+        <button class="option" onclick="nextQuestion('Normal', 'question2b')">😐 Normal</button>
+        <button class="option" onclick="nextQuestion('Not so good', 'question2c')">😔 Not so good</button>
+      </div>
+    </div>
+
+    <!-- Question 2a (Follow-up for "Good") -->
+    <div id="question2a" class="question hidden">
+      <p>What do you prefer to make your day better?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Music', 'music')">Music</button>
+        <button class="option" onclick="nextQuestion('Movies', 'Movies')">Movies</button>
+        <button class="option" onclick="nextQuestion('Books', 'Books')">Books</button>
+        <button class="option" onclick="nextQuestion('Games', 'Games')">Games</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Music (Follow-up for "Good") -->
+    <div id="music" class="question hidden">
+      <p>Please select the language of your song:</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Hindi', 'response')">Hindi</button>
+        <button class="option" onclick="nextQuestion('English', 'response')">English</button>
+        <button class="option" onclick="nextQuestion('Punjabi', 'response')">Punjabi</button>
+        <button class="option" onclick="nextQuestion('Bhojpuri', 'response')">Bhojpuri</button>
+        <button class="option" onclick="nextQuestion('Haryanvi', 'response')">Haryanvi</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Movies (Follow-up for "Good") -->
+    <div id="Movies" class="question hidden">
+      <p>Please select a genre for Movies:</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Sci-Fi', 'response')">Sci-Fi</button>
+        <button class="option" onclick="nextQuestion('Horror comedy', 'response')">Horror comedy</button>
+        <button class="option" onclick="nextQuestion('Action', 'response')">Action</button>
+        <button class="option" onclick="nextQuestion('Thriller', 'response')">Thriller</button>
+        <button class="option" onclick="nextQuestion('Romance comedy', 'response')">Romance comedy</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Books (Follow-up for "Good") -->
+    <div id="Books" class="question hidden">
+      <p>Please select a genre for Books:</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Self Improvement', 'response')">Self Improvement</button>
+        <button class="option" onclick="nextQuestion('Novel', 'response')">Novel</button>
+        <button class="option" onclick="nextQuestion('Biography', 'response')">Biography</button>
+        <button class="option" onclick="nextQuestion('Comics', 'response')">Comics</button>
+        <button class="option" onclick="nextQuestion('Mystery', 'response')">Mystery</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Games (Follow-up for "Good") -->
+    <div id="Games" class="question hidden">
+      <p>Please select a genre for Games:</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Action', 'response')">Action</button>
+        <button class="option" onclick="nextQuestion('Role playing', 'response')">Role playing</button>
+        <button class="option" onclick="nextQuestion('Board', 'response')">Board</button>
+        <button class="option" onclick="nextQuestion('Casual', 'response')">Casual</button>
+        <button class="option" onclick="nextQuestion('Puzzle', 'response')">Puzzle</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Question 2b (Follow-up for "Normal") -->
+    <div id="question2b" class="question hidden">
+      <p>Got it. Is there anything specific on your mind?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Work stress', 'question3b')">Work stress</button>
+        <button class="option" onclick="nextQuestion('Personal issues', 'question3b')">Personal issues</button>
+        <button class="option" onclick="nextQuestion('Financial issues', 'question3b')">Financial issues</button>
+        <button class="option" onclick="nextQuestion('Just an average day', 'question3b')">Just an average day</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Question 3b (Follow-up for "Normal") -->
+    <div id="question3b" class="question hidden">
+      <p>Got it. How can I help you feel better?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Suggest a relaxation technique', 'response')">Suggest a relaxation technique</button>
+        <button class="option" onclick="nextQuestion('Help me set a small goal', 'response')">Help me set a small goal</button>
+        <button class="option" onclick="nextQuestion('Just listen', 'response')">Just listen</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Question 2c (Follow-up for "Not so good") -->
+    <div id="question2c" class="question hidden">
+      <p>I’m sorry to hear that. What’s bothering you the most?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('Feeling anxious', 'question3c')">Feeling anxious</button>
+        <button class="option" onclick="nextQuestion('Feeling lonely', 'question3c')">Feeling lonely</button>
+        <button class="option" onclick="nextQuestion('Feeling overwhelmed', 'question3c')">Feeling overwhelmed</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Question 3c (Follow-up for "Not so good") -->
+    <div id="question3c" class="question hidden">
+      <p>I understand. Let’s work on this together. What do you need right now?</p>
+      <div class="options">
+        <button class="option" onclick="nextQuestion('A calming exercise', 'response')">A calming exercise</button>
+        <button class="option" onclick="nextQuestion('Encouragement', 'response')">Encouragement</button>
+        <button class="option" onclick="nextQuestion('A distraction', 'response')">A distraction</button>
+        <button class="option back-button" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <!-- Final Response -->
+    <div id="response" class="question hidden">
+      <p class="response">Thank you for sharing! Here's a suggestion for you:</p>
+      <p id="suggestion"></p>
+      <button class="option" onclick="restart()">Start Over</button>
+    </div>
+  </div>
+
+  <script>
+    let answers = [];
+
+    function nextQuestion(answer, nextId) {
+      answers.push(answer);
+      document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+      document.getElementById(nextId).classList.remove('hidden');
+
+      if (nextId === 'response') {
+        provideSuggestion();
+      }
+    }
+
+    function provideSuggestion() {
+      const suggestionElement = document.getElementById('suggestion');
+      const lastAnswer = answers[answers.length - 1];
+
+      // Dynamic suggestions for music
+      if (lastAnswer === 'Hindi') {
+        suggestionElement.innerHTML = `
+          Here’s a Hindi song recommendation for you: <br>
+          <strong>"Tum Hi Ho"</strong> by Arijit Singh. <br>
+          <a href="https://www.youtube.com/watch?v=YQHsXMglC9A" target="_blank">Listen on YouTube</a>
+        `;
+      } else if (lastAnswer === 'English') {
+        suggestionElement.innerHTML = `
+          Here’s an English song recommendation for you: <br>
+          <strong>"Shape of You"</strong> by Ed Sheeran. <br>
+          <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" target="_blank">Listen on YouTube</a>
+        `;
+      } else if (lastAnswer === 'Punjabi') {
+        suggestionElement.innerHTML = `
+          Here’s a Punjabi song recommendation for you: <br>
+          <strong>"Lahore"</strong> by Guru Randhawa. <br>
+          <a href="https://www.youtube.com/watch?v=wZ1T7uM0QaU" target="_blank">Listen on YouTube</a>
+        `;
+      }else if (lastAnswer === 'Bhojpuri') {
+        suggestionElement.innerHTML = `
+          Here’s a Bhojpuri song recommendation for you: <br>
+          <strong>"Maroon Color Sadiya"</strong> by Dinesh Lal Yadav. <br>
+          <a href="https://www.youtube.com/watch?v=zmwfd8x0DrM" target="_blank">Listen on YouTube</a>
+        `;
+      }else if (lastAnswer === 'Haryanvi') {
+        suggestionElement.innerHTML = `
+          Here’s a Haryanvi song recommendation for you: <br>
+          <strong>"Solid body re"</strong> by Ajay Hooda. <br>
+          <a href="https://www.youtube.com/watch?v=ou-litQ9hWQ" target="_blank">Listen on YouTube</a>
+        `;
+      }
+      
+
+      // Dynamic suggestions for movies
+      else if (lastAnswer === 'Sci-Fi') {
+        suggestionElement.innerHTML = `
+          Here’s a Sci-Fi movie recommendation for you: <br>
+          <strong>"Inception"</strong> directed by Christopher Nolan. <br>
+          <a href="https://www.imdb.com/title/tt1375666/" target="_blank">Learn more on IMDb</a>
+        `;
+      } else if (lastAnswer === 'Horror comedy') {
+        suggestionElement.innerHTML = `
+          Here’s a Horror Comedy movie recommendation for you: <br>
+          <strong>"Zombieland"</strong> starring Jesse Eisenberg. <br>
+          <a href="https://www.imdb.com/title/tt1156398/" target="_blank">Learn more on IMDb</a>
+        `;
+      }
+
+      // Dynamic suggestions for books
+      else if (lastAnswer === 'Self Improvement') {
+        suggestionElement.innerHTML = `
+          Here’s a Self-Improvement book recommendation for you: <br>
+          <strong>"Atomic Habits"</strong> by James Clear. <br>
+          <a href="https://www.amazon.com/Atomic-Habits-James-Clear/dp/0735211299" target="_blank">Buy on Amazon</a>
+        `;
+      } else if (lastAnswer === 'Novel') {
+        suggestionElement.innerHTML = `
+          Here’s a Novel recommendation for you: <br>
+          <strong>"The Alchemist"</strong> by Paulo Coelho. <br>
+          <a href="https://www.amazon.com/Alchemist-Paulo-Coelho/dp/0062315005" target="_blank">Buy on Amazon</a>
+        `;
+      }
+
+      // Dynamic suggestions for games
+      else if (lastAnswer === 'Action') {
+        suggestionElement.innerHTML = `
+          Here’s an Action game recommendation for you: <br>
+          <strong>"Call of Duty: Modern Warfare"</strong>. <br>
+          <a href="https://www.callofduty.com/modernwarfare" target="_blank">Learn more</a>
+        `;
+      } else if (lastAnswer === 'Role playing') {
+        suggestionElement.innerHTML = `
+          Here’s a Role-Playing game recommendation for you: <br>
+          <strong>"The Witcher 3: Wild Hunt"</strong>. <br>
+          <a href="https://www.thewitcher.com/" target="_blank">Learn more</a>
+        `;
+      }
+
+      // Other suggestions
+      else if (lastAnswer === 'Suggest a relaxation technique') {
+        suggestionElement.textContent = "Try the 4-7-8 breathing technique: Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds.";
+      } else if (lastAnswer === 'Help me set a small goal') {
+        suggestionElement.textContent = "Set a small, achievable goal for today, like drinking more water or taking a 10-minute walk.";
+      } else if (lastAnswer === 'Just listen') {
+        suggestionElement.textContent = "Sometimes, just being heard is enough. I’m here for you.";
+      } else if (lastAnswer === 'A calming exercise') {
+        suggestionElement.textContent = "Try the 5-4-3-2-1 grounding technique: Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.";
+      } else if (lastAnswer === 'Encouragement') {
+        suggestionElement.textContent = "You’re stronger than you think. Take things one step at a time—you’ve got this!";
+      } else if (lastAnswer === 'A distraction') {
+        suggestionElement.textContent = "Distract yourself with a fun activity, like listening to music, drawing, or watching a favorite show.";
+      }
+    }
+
+    function goBack() {
+      answers.pop(); // Remove the last answer
+      const currentQuestion = document.querySelector('.question:not(.hidden)').id;
+      const previousQuestion = getPreviousQuestion(currentQuestion);
+      document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+      document.getElementById(previousQuestion).classList.remove('hidden');
+    }
+
+    function getPreviousQuestion(currentQuestion) {
+      // Map each question to its previous question
+      const questionMap = {
+        question2a: 'question1',
+        question2b: 'question1',
+        question2c: 'question1',
+        music: 'question2a',
+        Movies: 'question2a',
+        Books: 'question2a',
+        Games: 'question2a',
+        question3b: 'question2b',
+        question3c: 'question2c',
+      };
+      return questionMap[currentQuestion];
+    }
+
+    function restart() {
+      answers = [];
+      document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+      document.getElementById('question1').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
