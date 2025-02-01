@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SELF HELP THERAPY - Your Mental Health Self-Care Bot</title>
+  <title>SELF HELP THERAPY- Your Mental Health Self-Care Bot</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,16 +20,25 @@
     }
     header h1 {
       margin: 0;
-      font-size: 3em;
-      text-transform: uppercase;
-      font-weight: bold;
+      font-size: 2.5em;
       opacity: 0;
       transform: translateY(-30px);
       animation: fadeInUp 1.5s ease-in-out forwards;
     }
+    header h1 {
+      font-size: 3em;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
     @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     header p {
       font-size: 1.2em;
@@ -43,13 +51,17 @@
       background: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    h2, a {
+    h2 {
       color: #71bbe9;
+    }
+    a {
+      color: #71bbe9;
+      text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    .cta-button, .show-more-button, .mood-selector button {
+    .cta-button, .show-more-button {
       display: inline-block;
       background: #71bbe9;
       color: white;
@@ -60,8 +72,8 @@
       cursor: pointer;
       transition: all 0.3s ease-in-out;
     }
-    .cta-button:hover, .show-more-button:hover, .mood-selector button:hover {
-      background: #5ca3d0;
+    .cta-button:hover, .show-more-button:hover {
+      background: #71bbe9;
       transform: scale(1.05);
     }
     footer {
@@ -71,22 +83,53 @@
       color: white;
       margin-top: 20px;
     }
-    .image-container img, .relaxation-techniques .technique img {
-      max-width: 100%;
+
+    .image-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .image-container img {
+      width: 100%;
+      max-width: 600px;
       border-radius: 10px;
     }
+
     .relaxation-techniques {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       margin-top: 30px;
     }
+
     .relaxation-techniques .technique {
       width: 30%;
       padding: 10px;
       text-align: center;
       margin-bottom: 20px;
     }
+
+    .relaxation-techniques img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 10px;
+    }
+
+    .mood-selector button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #71bbe9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .mood-selector button:hover {
+      background-color: #71bbe9;
+    }
+
+    /* Hide the detailed content initially */
     .more-content {
       display: none;
       padding: 10px;
@@ -94,54 +137,135 @@
       border-radius: 8px;
       margin-top: 20px;
     }
+
+    /* Add smooth transitions */
+    .hidden {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .visible {
+      display: block;
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>SELF HELP THERAPY</h1>
-    <p>"Taking care of your mind is just as important as taking care of your body."</p>
+    <p>"Taking Care of your Mind is just as Importanat as taking care of your Body"</p>
   </header>
 
   <div class="container">
     <h2>What is Self Help Therapy?</h2>
-    <p>Self Help Therapy is a self-care bot designed to support your mental health journey. Whether you're feeling stressed, anxious, or just need a little encouragement, Self Help Therapy is here to help.</p>
+    <p>Self Help Therapy is self-care bot designed to support your mental health journey. Whether you're feeling stressed, anxious, or just need a little encouragement, Self Help Therapy is here to help you practice self-care, feel reliable, and feel your best.</p>
+    
+    <!-- Image section added -->
     <div class="image-container">
       <img src="mental_health_image.jpg" alt="Mental Health Wellness">
     </div>
 
     <h2>Relaxation Techniques</h2>
+    <p>Here are some relaxation techniques to help calm your mind and reduce stress:</p>
+
+    <!-- Relaxation techniques section with images -->
     <div class="relaxation-techniques">
+      <!-- Breathing Exercises -->
       <div class="technique">
         <img src="breathing_technique.jpg" alt="Breathing Exercises">
         <h3>Breathing Exercises</h3>
-        <p>Slowly inhale and exhale to calm your mind.</p>
+        <p>Take a deep breath. Slowly inhale and exhale to calm your mind.</p>
       </div>
+      <!-- Meditation -->
       <div class="technique">
         <img src="meditation_illustration.jpg" alt="Meditation">
         <h3>Meditation</h3>
-        <p>Focus on your breath, clear your thoughts, and meditate.</p>
+        <p>Focus on your breath, clear your thoughts, and meditate for a peaceful mind.</p>
       </div>
+      <!-- Guided Imagery -->
       <div class="technique">
         <img src="guided_imagery.jpg" alt="Guided Imagery">
         <h3>Guided Imagery</h3>
-        <p>Visualize a calm and peaceful place to reduce stress.</p>
+        <p>Visualize a calm and peaceful place to reduce anxiety and stress.</p>
       </div>
+    </div>
+
+    <!-- Mood Selector -->
+    <div class="mood-selector">
+      <h3>How are you feeling today?</h3>
+      <button onclick="updateMood('Happy')">😊 Happy</button>
+      <button onclick="updateMood('Stressed')">😟 Stressed</button>
+      <button onclick="updateMood('Motivated')">💪 Motivated</button>
+      <button onclick="updateMood('Anxious')">😰 Anxious</button>
+    </div>
+
+    <!-- Chatbot Interaction -->
+    <div class="chat-container" id="chat-container">
+      <h3>Chat with Self Help Therapy</h3>
+      <p>Tell me how you're feeling, and I'll guide you!</p>
+      <div id="chat-response"></div>
+    </div>
+
+    <!-- Show More Content Button -->
+    <button class="show-more-button" onclick="toggleContent()">Show More</button>
+    <div class="more-content" id="more-content">
+      <h2>How Self Help Therapy Can Help You</h2>
+      <ul>
+        <li><strong>Daily Check-Ins:</strong> Start your day with a quick mood check-in and get personalized suggestions.</li>
+        <li><strong>Guided Relaxation:</strong> Access mindfulness exercises, breathing techniques, and calming meditations.</li>
+        <li><strong>Emotional Support:</strong> Get empathetic conversations and coping strategies.</li>
+        <li><strong>Self-Care Tips & Resources:</strong> Explore articles, videos, and tools for better mental health.</li>
+        <li><strong>Crisis Support:</strong> Connect with emergency resources if needed.</li>
+      </ul>
     </div>
 
     <h2>Why Choose Self Help Therapy?</h2>
     <ul>
       <li>Always Available</li>
-      <li>Non-Judgmental</li>`
+      <li>Non-Judgmental</li>
       <li>Personalized</li>
       <li>Proactive Self-Care</li>
     </ul>
 
-    <h2>Get Started</h2>
-    <a href="mental_2.html" class="cta-button">Use Self Help Therapy Now</a>
-  </div>
+    <h2>Get Started with Self Help Therapy</h2>
+    <p>Ready to take the first step toward better mental health?</p>
+    <a href="#" class="cta-button">Use Self Help Therapy Now</a>
+
+    <h2>FAQs</h2>
+    <p><strong>Q: Is Self Help Therapy a replacement for therapy?</strong><br>
+    A: No, Self Help Therapy is not a substitute for professional therapy. It’s a tool to help you practice self-care and manage daily stress.</p>
+
+    <h2>About Us</h2>
+    <p>Self Help Therapy is created to help people relax for a little while.</p>
 
   <footer>
     <p>Take care of your mind. You deserve it. 💙</p>
   </footer>
+
+  <script>
+    // Mood Selector
+    function updateMood(mood) {
+      let response = '';
+      if (mood === 'Happy') {
+        response = "That's awesome! Keep spreading your positive energy!";
+      } else if (mood === 'Stressed') {
+        response = "Take a moment to breathe deeply, you're doing great!";
+      } else if (mood === 'Motivated') {
+        response = "That's the spirit! Keep that energy up!";
+      } else if (mood === 'Anxious') {
+        response = "Take a deep breath. You are safe and supported!";
+      }
+      document.getElementById('chat-response').innerText = response;
+      document.getElementById('chat-container').style.display = 'block';
+    }
+
+    // Show More Content
+    function toggleContent() {
+      const content = document.getElementById('more-content');
+      content.classList.toggle('hidden');
+      content.classList.toggle('visible');
+    }
+  </script>
 </body>
 </html>
