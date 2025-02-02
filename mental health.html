@@ -1,105 +1,164 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SELF HELP THERAPY- Your Mental Health Self-Care Bot</title>
+  <title>SELF HELP THERAPY - Your Mental Health Self-Care Bot</title>
   <style>
-  body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background: url('your-background-image.jpg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-}
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: url('your-background-image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color:hsla(140, 20%, 90%, 0.6); 
-  z-index: -1;
-}
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: hsla(140, 20%, 90%, 0.6);
+      z-index: -1;
+    }
+
     header {
-      background: #71bbe9;
-      color: white;
-      padding: 20px 0;
+     
+      padding: 40px 0;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 5em;
-      opacity: 0;
-      transform: translateY(-30px);
-      animation: fadeInUp 1.5s ease-in-out forwards;
-    }
-    header h1 {
-      font-size: 4em;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    header p {
-      font-size: 1.8em;
-      color: #fff;
-    }
-   
-    h2 {
-      color: #71bbe9;
-    }
-    a {
-      color: #71bbe9;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .cta-button, .show-more-button {
-  display: inline-block;
-  background: #71bbe9;
-  color: white;
-  padding: 15px 30px; /* Increased padding for a bigger button */
-  font-size: 1.8em; /* Larger text */
-  margin: 20px 0;
-  border-radius: 10px; /* More rounded corners */
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+header h1 {
+  margin: 0;
+  font-size: 8em;
+  font-family: 'Montserrat', sans-serif; /* Modern geometric font */
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ff6600; /* Initial color (orange) */
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1.5s ease-in-out forwards, colorChange 3s ease-in-out forwards, scaleUp 1.5s ease-in-out forwards;
 }
 
-/* Hover animation */
-.show-more-button:hover {
-  background: #5ca9d6;
-  transform: scale(1.2); /* Slight zoom effect */
-  animation: bounce 0.5s ease-in-out;
-}
-
-/* Bounce animation */
-@keyframes bounce {
-  0%, 100% {
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-5px);
+}
+
+@keyframes colorChange {
+  0% {
+    color: #ff6600; /* Starts as orange */
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    color: #0077ff; /* Ends as modern blue */
+    text-shadow: 2px 2px 15px rgba(0, 119, 255, 0.7); /* Stronger glow effect */
   }
 }
-    .cta-button:hover, .show-more-button:hover {
-      background: #71bbe9;
-      transform: scale(1.05);
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+    header p {
+      font-size: 2em;
+      color: #0b0b0b;
     }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #4a90e2;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #4a90e2;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      margin: 20px 0;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background: #357acb;
+      transform: scale(1.1);
+    }
+
+    .relaxation-techniques {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .technique {
+      width: 30%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .technique img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 10px;
+    }
+
+    .mood-selector button {
+      padding: 12px 24px;
+      margin: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1.2em;
+    }
+
+    .mood-selector button:hover {
+      background-color: #357acb;
+      transform: scale(1.1);
+    }
+
+    .more-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+
+    .more-content.visible {
+      max-height: 500px;
+      opacity: 1;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -107,114 +166,62 @@ body::before {
       color: white;
       margin-top: 20px;
     }
+    h3 {
+            font-size: 24px; /* Increased font size */
+        }
 
-    .image-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .image-container img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
-    }
+        .cta-button {
+            font-size: 18px; /* Increased font size */
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            margin: 20px 0;
+           border-radius: 10px;
+           text-align: center;
+           cursor: pointer;
+            border-radius: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-    .relaxation-techniques {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 30px;
-    }
-
-    .relaxation-techniques .technique {
-      width: 30%;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .relaxation-techniques img {
-      width: 100%;
-      max-width: 250px;
-      border-radius: 10px;
-    }
-
-    .mood-selector button {
-      display: inline-block;
-      padding: 12px 24px;
-      margin: 10px;
-      background-color: #71bbe9;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size:1.2em ;
-      font-weight:bold ;
-    }
-    .mood-selector button:hover {
-  background-color: #4a90e2;
-  transform: scale(1.1);
-}
-
-    .more-content {
-      display: none;
-      padding: 10px;
-      background-color: #e8f5e9;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    .hidden {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease-out;
-    }
-    .visible {
-      display: block;
-      opacity: 1;
-      transition: opacity 0.5s ease-in;
-    }
+        .cta-button:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+            background-color: #0056b3; /* Darker shade on hover */
+        }
     
   </style>
 </head>
 <body>
+
   <header>
     <h1>SELF HELP THERAPY</h1>
-    <p>"Taking Care of your Mind is just as Importanat as taking care of your Body"</p>
+    <p>"Taking care of your mind is just as important as taking care of your body"</p>
   </header>
 
   <div class="container">
     <h2>What is Self Help Therapy?</h2>
-    <p>Self Help Therapy is self-care bot designed to support your mental health journey. Whether you're feeling stressed, anxious, or just need a little encouragement, Self Help Therapy is here to help you practice self-care, feel reliable, and feel your best.</p>
-    
-    <div class="image-container">
-      <img src="mental_health_image.jpg" alt="Mental Health Wellness">
-    </div>
+    <p>Self Help Therapy is a self-care bot designed to support your mental health journey. Whether you're feeling stressed, anxious, or just need a little encouragement, Self Help Therapy is here to help.</p>
 
     <h2>Relaxation Techniques</h2>
-    <p>Here are some relaxation techniques to help calm your mind and reduce stress:</p>
-
     <div class="relaxation-techniques">
-      
       <div class="technique">
         <img src="breathing_technique.jpg" alt="Breathing Exercises">
         <h3>Breathing Exercises</h3>
-        <p>Take a deep breath. Slowly inhale and exhale to calm your mind.</p>
+        <p>Slowly inhale and exhale to calm your mind.</p>
       </div>
-      
       <div class="technique">
         <img src="meditation_illustration.jpg" alt="Meditation">
         <h3>Meditation</h3>
-        <p>Focus on your breath, clear your thoughts, and meditate for a peaceful mind.</p>
+        <p>Clear your thoughts and meditate for a peaceful mind.</p>
       </div>
-      
       <div class="technique">
         <img src="guided_imagery.jpg" alt="Guided Imagery">
         <h3>Guided Imagery</h3>
-        <p>Visualize a calm and peaceful place to reduce anxiety and stress.</p>
+        <p>Visualize a calm and peaceful place to reduce stress.</p>
       </div>
     </div>
 
-    
     <div class="mood-selector">
       <h3>How are you feeling today?</h3>
       <button onclick="updateMood('Happy')">😊 Happy</button>
@@ -223,42 +230,35 @@ body::before {
       <button onclick="updateMood('Anxious')">😰 Anxious</button>
     </div>
 
-    <div class="chat-container" id="chat-container">
+    <div class="chat-container" id="chat-container" style="display: none;">
       <h3>Chat with Self Help Therapy</h3>
-      <p>Tell me how you're feeling, and I'll guide you!</p>
-      <div id="chat-response"></div>
+      <p id="chat-response"></p>
     </div>
 
-    <button class="show-more-button" onclick="toggleContent()">Show More</button>
+    <button class="cta-button" onclick="toggleContent()">Show More</button>
     <div class="more-content" id="more-content">
       <h2>How Self Help Therapy Can Help You</h2>
       <ul>
-        <li><strong>Daily Check-Ins:</strong> Start your day with a quick mood check-in and get personalized suggestions.</li>
-        <li><strong>Guided Relaxation:</strong> Access mindfulness exercises, breathing techniques, and calming meditations.</li>
-        <li><strong>Emotional Support:</strong> Get empathetic conversations and coping strategies.</li>
-        <li><strong>Self-Care Tips & Resources:</strong> Explore articles, videos, and tools for better mental health.</li>
-        <li><strong>Crisis Support:</strong> Connect with emergency resources if needed.</li>
+        <li><strong>Daily Check-Ins:</strong> Get personalized suggestions.</li>
+        <li><strong>Guided Relaxation:</strong> Access breathing techniques and mindfulness exercises.</li>
+        <li><strong>Emotional Support:</strong> Receive empathetic responses.</li>
+        <li><strong>Self-Care Tips:</strong> Learn about mental health resources.</li>
       </ul>
     </div>
 
-    <h2>Why Choose Self Help Therapy?</h2>
-    <ul>
-      <li>Always Available</li>
-      <li>Non-Judgmental</li>
-      <li>Personalized</li>
-      <li>Proactive Self-Care</li>
-    </ul>
+    <h2>FAQ</h2>
+    <a href="chat bot.html" class="cta-button">FAQ(QUESTION))</a>
+    <h3>Stress Test</h3>
+    <a href="stress relief test.html" class="cta-button">Take Stress Test</a>
+    <h2>Mental Wellbing</h2>
+    <a href="self care .html" class="cta-button">check stress level</a>
+    <h4>Get Started</h4>
+    <a href="health.html" class="cta-button">Start Now</a>
+    <h5>Give your feedback</h5>
+    <a href="feedback 2.html" class="cta-button">Feedback</a>
 
-    <h2>Get Started with Self Help Therapy</h2>
-    <p>Ready to take the first step toward better mental health?</p>
-    <a href="health.html" class="cta-button">Use Self Help Therapy Now</a>
-
-    <h2>FAQs</h2>
-    <p><strong>Q: Is Self Help Therapy a replacement for therapy?</strong><br>
-    A: No, Self Help Therapy is not a substitute for professional therapy. It’s a tool to help you practice self-care and manage daily stress.</p>
-
-    <h2>About Us</h2>
-    <p>Self Help Therapy is created to help people relax for a little while.</p>
+    
+  </div>
 
   <footer>
     <p>Take care of your mind. You deserve it. 💙</p>
@@ -266,25 +266,24 @@ body::before {
 
   <script>
     function updateMood(mood) {
-      let response = '';
-      if (mood === 'Happy') {
-        response = "That's awesome! Keep spreading your positive energy!";
-      } else if (mood === 'Stressed') {
-        response = "Take a moment to breathe deeply, you're doing great!";
-      } else if (mood === 'Motivated') {
-        response = "That's the spirit! Keep that energy up!";
-      } else if (mood === 'Anxious') {
-        response = "Take a deep breath. You are safe and supported!";
-      }
-      document.getElementById('chat-response').innerText = response;
+      const messages = {
+        "Happy": "That's awesome! Keep spreading positivity! 😊",
+        "Stressed": "Take a deep breath, you're doing great! 🌿",
+        "Motivated": "That's the spirit! Keep that energy up! 💪",
+        "Anxious": "Take a deep breath. You are safe and supported! 💙"
+      };
+      document.getElementById('chat-response').innerText = messages[mood];
       document.getElementById('chat-container').style.display = 'block';
     }
 
     function toggleContent() {
       const content = document.getElementById('more-content');
-      content.classList.toggle('hidden');
       content.classList.toggle('visible');
+      if (content.classList.contains('visible')) {
+        setTimeout(() => content.scrollIntoView({ behavior: "smooth" }), 300);
+      }
     }
   </script>
+
 </body>
 </html>

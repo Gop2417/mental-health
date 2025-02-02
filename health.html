@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindfulMate - Mental Health Self-Care Bot</title>
+  <title>SELF HELP THERAPY- Mental Health Self-Care Bot</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
       color: #333;
       margin: 0;
       padding: 0;
@@ -15,18 +15,35 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .container {
-      background: rgb(169, 211, 190);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
       width: 100%;
       text-align: center;
+      animation: slideIn 1s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     h1 {
       color: #4e89d2;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
     .question {
       margin: 20px 0;
@@ -35,22 +52,23 @@
     .options {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
     .option {
-      padding: 10px;
-      background: #b4bac7;
+      padding: 15px;
+      background: #4e89d2;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      font-size: 1.1em;
+      transition: transform 0.2s, background 0.3s;
     }
     .option:hover {
-      background: #457fa0;
+      background: #3572a5;
     }
     .option:active {
-      transform: scale(0.95);
+      transform: scale(0.98);
     }
     .back-button {
       background: #6c757d;
@@ -63,9 +81,11 @@
       font-size: 1.1em;
       color: #405288;
     }
+
     .hidden {
       display: none;
     }
+    
     a {
       color: #4e89d2;
       text-decoration: none;
@@ -77,8 +97,8 @@
 </head>
 <body>
   <div class="container">
-    <h1>MindfulMate</h1>
-    <p>Your Mental Health Self-Care Bot</p>
+    <h1>SELF HELP THERAPY</h1>
+    <p>Get a Advice for mental health</p>
 
     <!-- Question 1 -->
     <div id="question1" class="question">

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 40%;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #ff6b81;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .emoji-rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 24px;
+        }
+        .emoji-rating label {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .emoji-rating label:hover {
+            transform: scale(1.2);
+        }
+        .submit-btn {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background: #e84162;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>We Value Your Feedback 💬</h1>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required maxlength="10">
+
+            <label for="feedback">Your Thoughts:</label>
+            <textarea id="feedback" name="feedback" rows="4" required placeholder="Share your experience with us..."></textarea>
+
+            <label for="rating">How was your experience?</label>
+            <div class="emoji-rating">
+                <input type="radio" id="emoji1" name="rating" value="1">
+                <label for="emoji1">😡</label>
+                
+                <input type="radio" id="emoji2" name="rating" value="2">
+                <label for="emoji2">☹️</label>
+                
+                <input type="radio" id="emoji3" name="rating" value="3">
+                <label for="emoji3">😐</label>
+                
+                <input type="radio" id="emoji4" name="rating" value="4">
+                <label for="emoji4">😊</label>
+                
+                <input type="radio" id="emoji5" name="rating" value="5">
+                <label for="emoji5">😍</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents actual form submission
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let mobile = document.getElementById("mobile").value;
+            let feedback = document.getElementById("feedback").value;
+            let rating = document.querySelector('input[name="rating"]:checked');
+
+            if (!rating) {
+                alert("Please select a rating!");
+                return;
+            }
+
+            // Simulate saving data (Replace with actual backend storage)
+            let feedbackData = {
+                name: name,
+                email: email,
+                mobile: mobile,
+                feedback: feedback,
+                rating: rating.value
+            };
+
+            console.log("Feedback Submitted:", feedbackData);
+
+            alert("Thank you for your feedback!");
+
+            // Auto-clear the form after 5 seconds
+            setTimeout(() => {
+                document.getElementById("feedbackForm").reset();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+

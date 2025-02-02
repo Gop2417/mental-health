@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Self-Care Bot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            background: url('chatbotbackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 50px;
+            color: #fff;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .chat-container {
+            width: 380px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .bot-message {
+            background-color: #bbdefb;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            animation: fadeInText 1s ease-out;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .questions-list {
+            width: 380px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 8px 30px rgb(175 242 247);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        .questions-list strong {
+            color: #1976d2;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .question-button {
+            width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #1976d2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+        }
+
+        @keyframes buttonPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .question-button:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
+        question-button:active {
+    transform: scale(0.98); /* Slight scale-down effect when button is clicked */
+}
+.question-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.7); /* Add a custom focus ring */
+}
+
+        .answer-box {
+    width: 380px;
+    background-color: rgb(24 118 210 / 43%);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 8px 25px rgb(147 216 221);
+    display: none;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+/* Fade-in and slide-up animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+        
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="questions-list">
+            <strong>Suggested Questions:</strong>
+            <button class="question-button" onclick="showResponse('what is stress')">What is stress?</button>
+            <button class="question-button" onclick="showResponse('how to manage stress')">How to manage stress?</button>
+            <button class="question-button" onclick="showResponse('what is anxiety')">What is anxiety?</button>
+            <button class="question-button" onclick="showResponse('how to calm anxiety')">How to calm anxiety?</button>
+            <button class="question-button" onclick="showResponse('what is depression')">What is depression?</button>
+            <button class="question-button" onclick="showResponse('self-care tips')">Self-care tips?</button>
+            <button class="question-button" onclick="showResponse('how to sleep better')">How to sleep better?</button>
+            <button class="question-button" onclick="showResponse('benefits of meditation')">Benefits of meditation?</button>
+            <button class="question-button" onclick="showResponse('how to practice mindfulness')">How to practice mindfulness?</button>
+            <button class="question-button" onclick="showResponse('what are relaxation techniques')">What are relaxation techniques?</button>
+            <button class="question-button" onclick="showResponse('how to stop overthinking')">How to stop overthinking?</button>
+            <button class="question-button" onclick="showResponse('how to develop a positive mindset')">How to develop a positive mindset?</button>
+            <button class="question-button" onclick="showResponse('what is burnout')">What is burnout?</button>
+            <button class="question-button" onclick="showResponse('how to cope with burnout')">How to cope with burnout?</button>
+            <button class="question-button" onclick="showResponse('how to deal with loneliness')">How to deal with loneliness?</button>
+            <button class="question-button" onclick="showResponse('importance of social connections')">Importance of social connections?</button>
+            <button class="question-button" onclick="showResponse('how to boost self-esteem')">How to boost self-esteem?</button>
+            <button class="question-button" onclick="showResponse('ways to improve focus and concentration')">Ways to improve focus and concentration?</button>
+        </div>
+    </div>
+
+    <div class="answer-box" id="answer-box"></div>
+
+    <script>
+        const responses = {
+            "what is stress": "Stress is the body's reaction to pressure or challenges. It can be managed with self-care techniques like deep breathing and relaxation.",
+            "how to manage stress": "Try deep breathing, mindfulness, meditation, exercise, and talking to a friend or therapist to reduce stress.",
+            "what is anxiety": "Anxiety is a feeling of worry or fear. It can be managed with relaxation techniques, therapy, and self-care routines.",
+            "how to calm anxiety": "Breathing exercises, grounding techniques, and physical activity can help calm anxiety.",
+            "what is depression": "Depression is a mental health condition that affects mood, energy, and daily activities. Seeking support, therapy, and self-care can help.",
+            "self-care tips": "Engage in activities that relax and recharge you, such as reading, meditation, exercise, or spending time with loved ones.",
+            "how to sleep better": "Maintain a bedtime routine, avoid screens before bed, and create a relaxing sleep environment.",
+            "benefits of meditation": "Meditation helps reduce stress, improve focus, and enhance emotional well-being.",
+            "how to practice mindfulness": "Focus on the present moment, engage your senses, and practice deep breathing to cultivate mindfulness.",
+            "what are relaxation techniques": "Techniques like progressive muscle relaxation, deep breathing, and guided imagery help reduce stress.",
+            "how to stop overthinking": "Challenge negative thoughts, practice mindfulness, and engage in activities that keep your mind occupied.",
+            "how to develop a positive mindset": "Focus on gratitude, practice self-compassion, and surround yourself with positivity.",
+            "what is burnout": "Burnout is emotional, mental, and physical exhaustion due to prolonged stress.",
+            "how to cope with burnout": "Take breaks, prioritize self-care, and seek support to manage burnout effectively.",
+            "how to deal with loneliness": "Connect with loved ones, join social groups, and engage in activities you enjoy.",
+            "importance of social connections": "Strong social connections improve mental health and provide emotional support.",
+            "how to boost self-esteem": "Practice self-compassion, set small goals, and celebrate achievements.",
+            "ways to improve focus and concentration": "Practice mindfulness, take breaks, and minimize distractions."
+        };
+
+        function showResponse(question) {
+    const answerBox = document.getElementById("answer-box");
+    
+    // Update the answer text
+    answerBox.innerHTML = `<p>${responses[question]}</p>`;
+    
+    // Reset the animation by temporarily removing the animation class
+    answerBox.style.display = "none";  // Hide it first
+    
+    setTimeout(() => {
+        answerBox.style.display = "block";  // Show it again
+        answerBox.style.animation = 'none';  // Reset animation
+        answerBox.offsetHeight;  // Trigger reflow to reset the animation
+        answerBox.style.animation = 'fadeInUp 0.8s forwards';  // Reapply the animation
+    }, 10);  // Small delay to ensure the box is hidden before showing again
+}
+    </script>
+</body>
+</html>
